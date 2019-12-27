@@ -13,7 +13,8 @@ const Movie = ({ movieId }) => {
 
   useEffect(() => {
     getMovie(movieId).then(resp => setMovie(resp));
-  }, []);
+  }, [movieId]);
+
   console.log(movie);
   return(
     <Fragment>
