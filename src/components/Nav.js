@@ -58,11 +58,11 @@ const Nav = () => {
           menuIsShowing={menuIsShowing}
         />
         <Link css={linkStyle} to="/">Home</Link>
-        <Link css={linkStyle} to="/chase-movie">
-          Random Movie
+        <Link css={linkStyle} to="/random-movies">
+          Random Movies
         </Link>
-        <Link css={linkStyle} to="/chase-movie">
-          Movie By Genre
+        <Link css={linkStyle} to="/filter">
+          Filter Movies
         </Link>
         <Link css={linkStyle} to="/about">
           About

@@ -3,7 +3,7 @@ import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
 
 const Movie = ({ movie }) => {
-  console.log(movie);
+
   return (
     <div>
       <p css={{margin: "40px 0 5px 0"}}>{movie.title}</p>

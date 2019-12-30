@@ -16,3 +16,4 @@ have an API key from their site if you clone this repository and try to start it
 ### Coming features
 - Get random movies by genre
 - Filter by release and other useful options
+- Mark movies as saved in a watchlist(localstorage)

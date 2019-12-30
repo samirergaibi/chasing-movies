@@ -5,7 +5,7 @@ import { Fragment } from "react";
 
 import Nav from "./Nav";
 import Home from "../pages/Home";
-import RandomMovie from "../pages/RandomMovie";
+import RandomMovies from "../pages/RandomMovies";
 import About from "../pages/About";
 import Movie from "../pages/Movie";
 import Footer from "../components/Footer";
@@ -26,7 +26,7 @@ function App() {
       }}>
         <Router>
           <Home path="/" />
-          <RandomMovie path="chase-movie" />
+          <RandomMovies path="random-movies" />
           <About path="about" />
           <Movie path="movie/:movieId" />
         </Router>

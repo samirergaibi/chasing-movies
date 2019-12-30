@@ -15,7 +15,6 @@ const Movie = ({ movieId }) => {
     getMovie(movieId).then(resp => setMovie(resp));
   }, [movieId]);
 
-  console.log(movie);
   return(
     <Fragment>
       {
