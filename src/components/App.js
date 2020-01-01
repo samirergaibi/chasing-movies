@@ -11,19 +11,20 @@ import Movie from "../pages/Movie";
 import Footer from "../components/Footer";
 
 function App() {
-
   return (
     <Fragment>
       <Nav />
-      <main css={{
-        textAlign: "center",
-        letterSpacing: "1px",
-        lineHeight: 1.4,
-        marginTop: "18vh",
-        "@media(min-width: 1025px)": {
-          marginTop: "initial"
-        }
-      }}>
+      <main
+        css={{
+          textAlign: "center",
+          letterSpacing: "1px",
+          lineHeight: 1.4,
+          marginTop: "18vh",
+          "@media(min-width: 1025px)": {
+            marginTop: "initial"
+          }
+        }}
+      >
         <Router>
           <Home path="/" />
           <RandomMovies path="random-movies" />

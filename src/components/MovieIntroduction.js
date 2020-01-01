@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import { useEffect, useState, Fragment } from "react";
+import { useEffect, useState } from "react";
 import {Link } from "@reach/router";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,18 +14,18 @@ import timeConverter from "../utils/timeConverter";
 import dateConverter from "../utils/dateConverter";
 
 const MovieCard = ({ movie }) => {
-  
+
   const [currentMovie, setCurrentMovie] = useState();
 
   useEffect(() => {
     getMovie(movie.id).then(resp => setCurrentMovie(resp));
   }, [movie.id]);
 
-  console.log(currentMovie);
-
   return currentMovie ? (
     <div>
-      <h2>{currentMovie.title}</h2>
+      <Link to={`/movie/${currentMovie.id}`} css={{ color: "#000", textDecoration: "none" }}>
+        <h2>{currentMovie.title}</h2>
+      </Link>
       <div
         css={{
           display: "flex",
@@ -60,7 +60,7 @@ const MovieCard = ({ movie }) => {
             <FontAwesomeIcon icon={faTheaterMasks} title="Genres" />
             {currentMovie.genres.map(genre => (
               <p key={genre.id}>
-                {genre.name}
+                {genre.name === "Science Fiction" ? "Sci-Fi" : genre.name}
               </p>
             ))}
           </div>
