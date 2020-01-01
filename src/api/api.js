@@ -15,21 +15,21 @@ export const getFrontPageMovies = (
     `${API.URL}discover/movie?api_key=${API.API_KEY}&include_adult=false&include_video=false&page=${randomPage}&primary_release_date.gte=${after}&primary_release_date.lte=${before}&vote_count.gte=1000`
   )
     .then(resp => resp.json())
-    .then(resp => { console.log("totalPages:", resp.total_pages); return resp})
+    .then(resp => resp)
     .catch(err => console.error(err))
 };
 
-export const getRandomMovie = () => {
+export const getRandomMovies = () => {
   const randomPage = Math.ceil(Math.random() * 100);
   return fetch(
-    `${API.URL}discover/movie?api_key=${API.API_KEY}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}&year=2018`
+    `${API.URL}discover/movie?api_key=${API.API_KEY}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomPage}`
   )
     .then(resp => resp.json())
     .then(resp => resp);
 };
 
 export const getMovie = (id) => {
-  return fetch(`${API.URL}movie/${id}?api_key=${API.API_KEY}`)
+  return fetch(`${API.URL}movie/${id}?api_key=${API.API_KEY}&append_to_response=videos`)
     .then(resp => resp.json())
     .then(resp => resp)
 }
