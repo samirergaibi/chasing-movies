@@ -2,6 +2,8 @@
 import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
 
+import logo from "../images/logo.png";
+
 const Logo = ({ hideMenu }) => {
   return (
     <Link
@@ -14,11 +16,13 @@ const Logo = ({ hideMenu }) => {
         position: "relative",
         zIndex: 99,
         "@media(min-width: 1025px)": {
-          display: "none"
+          // display: "none"
+          position: "absolute",
+          left: "10px"
         }
       }}
     >
-      MC
+      <img src={logo} alt="logo" css={{width: 50}}/>
     </Link>
   );
 };

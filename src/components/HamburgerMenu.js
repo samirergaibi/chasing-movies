@@ -40,7 +40,7 @@ const HamburgerMenu = ({ showOrHideMenu, menuIsShowing }) => {
           opacity: menuOpacity,
           height: "100vh",
           width: "100vw",
-          backgroundColor: "#2b90af",
+          backgroundColor: "#252525",
           transition: "all 0.4s"
         }}
       >
