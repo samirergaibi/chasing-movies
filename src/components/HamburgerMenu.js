@@ -63,7 +63,7 @@ const HamburgerMenu = ({ showOrHideMenu, menuIsShowing }) => {
           <Link to="/random-movies" onClick={showOrHideMenu}>
             Random Movies
           </Link>
-          <Link to="/filter" onClick={showOrHideMenu}>
+          <Link to="/filter-movies" onClick={showOrHideMenu}>
             Filter Movies
           </Link>
           <Link to="/about" onClick={showOrHideMenu}>
