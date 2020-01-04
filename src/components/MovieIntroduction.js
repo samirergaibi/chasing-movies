@@ -2,11 +2,7 @@
 import { jsx } from "@emotion/core";
 import { useEffect, useState } from "react";
 import {Link } from "@reach/router";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
-import { faTheaterMasks } from "@fortawesome/free-solid-svg-icons";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
 
 import { getMovie } from "../api/api";
 import LoadingSpinner from "./LoadingSpinner";
@@ -53,20 +49,20 @@ const MovieCard = ({ movie }) => {
           }}
         >
           <div>
-            <FontAwesomeIcon icon={faCalendarAlt} title="Release Date" />
-            <p>{dateConverter(currentMovie.release_date)}</p>
+            <FontAwesomeIcon icon="calendar-alt" title="Release Date" />
+            <p>{currentMovie.release_date ? dateConverter(currentMovie.release_date) : "N/A"}</p>
           </div>
           <div>
-            <FontAwesomeIcon icon={faTheaterMasks} title="Genres" />
-            {currentMovie.genres.map(genre => (
+            <FontAwesomeIcon icon="theater-masks" title="Genres" />
+            {currentMovie.genres ? currentMovie.genres.map(genre => (
               <p key={genre.id}>
                 {genre.name === "Science Fiction" ? "Sci-Fi" : genre.name}
               </p>
-            ))}
+            )) : <p>N/A</p>}
           </div>
           <div>
-            <FontAwesomeIcon icon={faClock} title="Runtime" />
-            <p>{timeConverter(currentMovie.runtime)}</p>
+            <FontAwesomeIcon icon="clock" title="Runtime" />
+            <p>{currentMovie.runtime ? timeConverter(currentMovie.runtime) : "N/A"}</p>
           </div>
         </div>
       </div>

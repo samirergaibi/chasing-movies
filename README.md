@@ -14,6 +14,8 @@ have an API key from their site if you clone this repository and try to start it
 * replace "your-api-key" with your api key
 
 ### Coming features
-- Get random movies by genre
+- Get random movies by genre/s
 - Filter by release and other useful options
 - Mark movies as saved in a watchlist(localstorage)
+- When infite scrolling, dont get movies that is already beeing showed in page
+- Trending movies on homepage

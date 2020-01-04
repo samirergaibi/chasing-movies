@@ -6,12 +6,17 @@ import { jsx } from "@emotion/core";
 const Footer = () => {
   return(
     <footer css={{
-      textAlign: "center",
       fontSize: "12px",
+      backgroundColor: "#252525",
+      minHeight: "5vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      marginTop: "auto"
     }}>
       <a 
       css={{
-        color: "#000",
+        color: "#fff",
         textDecoration: "none"
       }}
       href="https://www.themoviedb.org/"

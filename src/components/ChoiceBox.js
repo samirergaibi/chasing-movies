@@ -2,8 +2,6 @@
 import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuestion } from "@fortawesome/free-solid-svg-icons";
-import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
 const ChoiceBox = () => {
   return (
@@ -53,7 +51,7 @@ const ChoiceBox = () => {
           justifyContent: "center"
         }}
       >
-        <FontAwesomeIcon css={{ fontSize: 18 }} icon={faQuestion} />
+        <FontAwesomeIcon css={{ fontSize: 18 }} icon="question" />
         <Link to="random-movies">Have no idea what to watch</Link>
       </div>
       <div
@@ -70,8 +68,8 @@ const ChoiceBox = () => {
           justifyContent: "center"
         }}
       >
-        <FontAwesomeIcon css={{ fontSize: 18 }} icon={faFilter} />
-        <Link to="filter">Kinda know what to watch</Link>
+        <FontAwesomeIcon css={{ fontSize: 18 }} icon="filter" />
+        <Link to="filter-movies">Kinda know what to watch</Link>
       </div>
     </div>
   );
