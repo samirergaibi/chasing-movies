@@ -1,38 +1,51 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import { Fragment, useEffect, useState } from "react";
 
-import { getFrontPageMovies } from "../api/api";
-import MovieContainer from "../components/MovieContainer";
-import LoadingSpinner from "../components/LoadingSpinner";
+import ChoiceBox from "../components/ChoiceBox";
+import popcorn from "../images/popcorn.png";
+import popcornMobile from "../images/popcorn-mobile.png";
 
 const Home = () => {
-  const [randomMovies, setRandomMovies] = useState();
-
-  useEffect(() => {
-    const randomNumber = Math.floor(Math.random() * 18);
-    getFrontPageMovies()
-      .then(resp => {
-        setRandomMovies(resp.results.slice(randomNumber, randomNumber + 3));
-      })
-      .catch(err => console.error("Home: ", err));
-  }, []);
-
   return (
-    <Fragment>
-      <h1 css={{ margin: 40 }}>Movie Chasing</h1>
-      <p css={{ margin: 40 }}>
-        Welcome to <b>Movie Chasing!</b> This is the site you go to when you're
-        having problems finding a movie to watch.
+    <div css={{
+      paddingTop: "8vh",
+      "@media(min-width: 700px)": {
+        paddingTop: "10vh"
+      },
+      "@media(min-width: 1025px)": {
+        paddingTop: "0",
+      }
+    }}>
+      <div css={{
+        backgroundImage: `url(${popcornMobile})`,
+        backgroundSize: "cover",
+        height: "100vh",
+        width: "100%",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        zIndex: -1,
+        "@media(min-width: 1025px)": {
+          backgroundImage: `url(${popcorn})`,
+          height: "100vh",
+        }
+      }}></div>
+      <p
+        css={{
+          margin: "0 auto 5vh auto",
+          fontSize: "18px",
+          color: "#fff",
+          lineHeight: 1.6,
+          "@media(min-width: 1025px)": {
+            margin: "15vh auto 10vh auto",
+            width: "50vw",
+          }
+        }}
+      >
+        Welcome to <strong>Chasing Movies</strong>! <br/> A centralized place for you to find a movie to watch.
       </p>
-      {randomMovies ? (
-        randomMovies.map(movie => (
-          <MovieContainer movie={movie} key={movie.id} />
-        ))
-      ) : (
-        <LoadingSpinner />
-      )}
-    </Fragment>
+      <ChoiceBox />
+    </div>
   );
 };
 

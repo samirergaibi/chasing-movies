@@ -6,6 +6,7 @@ const API = {
   IMG_URL: "https://image.tmdb.org/t/p"
 };
 
+// Not used anymore --DELETE--
 export const getFrontPageMovies = (
   after = `${new Date().getFullYear() - 9}-01-01`,
   before = `${new Date().getFullYear() - 1}-01-01`

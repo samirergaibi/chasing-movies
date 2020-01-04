@@ -35,20 +35,25 @@ const Nav = () => {
         css={{
           display: "flex",
           justifyContent: "space-between",
+          alignItems: "center",
           position: "fixed",
           left: 0,
           right: 0,
           top: 0,
-          backgroundColor: "#2b90af",
-          padding: "20px 10px 20px 0",
+          backgroundColor: "#252525",
+          padding: "8px 10px 8px 0",
           "> a": {
             fontSize: "22px",
             color: "#fff",
             textDecoration: "none"
           },
+          "> a:hover": {
+            color: "#2b90af"
+          },
           "@media(min-width: 1025px)": {
             position: "initial",
-            justifyContent: "space-around"
+            justifyContent: "space-around",
+            padding: "20px 10px 20px 50vw",
           }
         }}
       >
@@ -57,7 +62,7 @@ const Nav = () => {
           showOrHideMenu={showOrHideMenu}
           menuIsShowing={menuIsShowing}
         />
-        <Link css={linkStyle} to="/">Home</Link>
+        {/* <Link css={linkStyle} to="/">Home</Link> */}
         <Link css={linkStyle} to="/random-movies">
           Random Movies
         </Link>
