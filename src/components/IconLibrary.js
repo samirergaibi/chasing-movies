@@ -5,7 +5,12 @@ import {
   faFilter,
   faCalendarAlt,
   faTheaterMasks,
-  faClock
+  faClock,
+  faBook,
+  faStar,
+  faStarHalf,
+  faChevronRight,
+  faUsers
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -14,5 +19,10 @@ library.add(
   faFilter,
   faCalendarAlt,
   faTheaterMasks,
-  faClock
+  faClock,
+  faBook,
+  faStar,
+  faStarHalf,
+  faChevronRight,
+  faUsers
 );

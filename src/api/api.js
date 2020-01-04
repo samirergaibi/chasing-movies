@@ -30,7 +30,7 @@ export const getRandomMovies = () => {
 };
 
 export const getMovie = (id) => {
-  return fetch(`${API.URL}movie/${id}?api_key=${API.API_KEY}&append_to_response=videos`)
+  return fetch(`${API.URL}movie/${id}?api_key=${API.API_KEY}&append_to_response=credits,videos`)
     .then(resp => resp.json())
     .then(resp => resp)
 }
