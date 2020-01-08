@@ -11,6 +11,7 @@ const YoutubeVideo = ({ src }) => {
       }
     }}
       src={`https://www.youtube.com/embed/${src}`}
+      title="Youtube trailer for the movie"
       frameBorder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen
