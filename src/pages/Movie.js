@@ -20,6 +20,10 @@ const Movie = ({ movieId }) => {
     });
   }, [movieId]);
 
+  useEffect(() => {
+    if (window) window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Fragment>
       {movie ? (
