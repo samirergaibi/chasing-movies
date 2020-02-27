@@ -5,8 +5,14 @@ import { useEffect } from "react";
 
 import why from "../images/why.jpg";
 import disclaimer from "../images/disclaimer.jpg";
+import { navigationTracker } from "../utils/navigationTracker";
 
-const Home = () => {
+const About = ({ path }) => {
+
+  useEffect(() => {
+    navigationTracker(path);
+  }, [path]);
+
   useEffect(() => {
     if (window) window.scrollTo(0, 0);
   }, []);
@@ -95,4 +101,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default About;
