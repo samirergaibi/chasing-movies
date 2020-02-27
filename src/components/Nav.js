@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import { Fragment, useState } from "react";
-import { Link } from "@reach/router";
 
 import Logo from "./Logo";
 import HamburgerMenu from "./HamburgerMenu";
+import NavLink from "./NavLink";
 
 const Nav = () => {
   const linkStyle = {
@@ -48,7 +48,7 @@ const Nav = () => {
             color: "#fff",
             textDecoration: "none"
           },
-          "> a:hover": {
+          " a:hover": {
             color: "#2b90af"
           },
           "@media(min-width: 1025px)": {
@@ -64,15 +64,15 @@ const Nav = () => {
           menuIsShowing={menuIsShowing}
         />
         {/* <Link css={linkStyle} to="/">Home</Link> */}
-        <Link css={linkStyle} to="/random-movies">
+        <NavLink css={linkStyle} to="/random-movies">
           Random Movies
-        </Link>
-        <Link css={linkStyle} to="/filter-movies">
+        </NavLink>
+        <NavLink css={linkStyle} to="/filter-movies">
           Filter Movies
-        </Link>
-        <Link css={linkStyle} to="/about">
+        </NavLink>
+        <NavLink css={linkStyle} to="/about">
           About
-        </Link>
+        </NavLink>
       </nav>
     </Fragment>
   );
