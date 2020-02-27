@@ -30,7 +30,7 @@ const HamburgerButton = ({ showOrHideMenu, menuIsShowing }) => {
       });
       setHamburgerLineBottom({
         ...hamburgerLine,
-        transform: "rotate(-45deg) translateY(-6px) translateX(5px)"
+        transform: "rotate(-45deg) translateY(-5px) translateX(5px)"
       });
     } else {
       setHamburgerLineTop(hamburgerLine);

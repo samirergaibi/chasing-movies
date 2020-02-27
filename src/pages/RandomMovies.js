@@ -5,9 +5,14 @@ import { Fragment, useEffect, useState } from "react";
 import { getRandomMovies } from "../api/api";
 import MovieIntroduction from "../components/MovieIntroduction";
 import Button from "../components/Button";
+import { navigationTracker } from "../utils/navigationTracker";
 
-const RandomMovies = () => {
+const RandomMovies = ({ path }) => {
   const [randomMovies, setRandomMovies] = useState();
+
+  useEffect(() => {
+    navigationTracker(path);
+  }, [path]);
 
   useEffect(() => {
     getRandomMovies().then(resp => setRandomMovies(resp.results));

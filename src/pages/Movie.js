@@ -8,11 +8,16 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import MovieDetailBox from "../components/MovieDetailBox";
 import YoutubeVideo from "../components/YoutubeVideo";
 import MovieCast from "../components/MovieCast";
+import { navigationTracker } from "../utils/navigationTracker";
 
-const Movie = ({ movieId }) => {
+const Movie = ({ movieId, uri }) => {
   const [movie, setMovie] = useState();
 
   const width = window && window.innerWidth;
+  
+  useEffect(() => {
+    navigationTracker(uri);
+  }, [uri]);
 
   useEffect(() => {
     getMovie(movieId).then(resp => {

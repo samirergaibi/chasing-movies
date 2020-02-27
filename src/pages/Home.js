@@ -1,11 +1,18 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
+import { useEffect } from "react";
 
 import ChoiceBox from "../components/ChoiceBox";
 import popcorn from "../images/popcorn.png";
 import popcornMobile from "../images/popcorn-mobile.png";
+import { navigationTracker } from "../utils/navigationTracker";
 
-const Home = () => {
+const Home = ({ path }) => {
+
+  useEffect(() => {
+    navigationTracker(path);
+  }, [path]);
+
   return (
     <div css={{
       paddingTop: "8vh",

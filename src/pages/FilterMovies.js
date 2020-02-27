@@ -6,8 +6,9 @@ import Dropdown from "../components/Dropdown";
 import { getGenres, getFilteredMovies } from "../api/api";
 import MovieIntroduction from "../components/MovieIntroduction";
 import Button from "../components/Button";
+import { navigationTracker } from "../utils/navigationTracker";
 
-const FilterMovies = () => {
+const FilterMovies = ({ path }) => {
   const [genres, setGenres] = useState(null);
   const [genre, setGenre] = useState(null);
   const [movies, setMovies] = useState(null);
@@ -15,6 +16,10 @@ const FilterMovies = () => {
   const loadMore= () => {
     getFilteredMovies(genre).then(filteredMovies => setMovies([...movies, ...filteredMovies.results]))
   }
+
+  useEffect(() => {
+    navigationTracker(path);
+  }, [path]);
 
   useEffect(() => {
     getGenres().then(resp => setGenres(resp.genres));
