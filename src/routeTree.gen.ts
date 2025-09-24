@@ -9,9 +9,27 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RandomMoviesRouteImport } from './routes/random-movies'
+import { Route as FilterMoviesRouteImport } from './routes/filter-movies'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo.tanstack-query'
 
+const RandomMoviesRoute = RandomMoviesRouteImport.update({
+  id: '/random-movies',
+  path: '/random-movies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FilterMoviesRoute = FilterMoviesRouteImport.update({
+  id: '/filter-movies',
+  path: '/filter-movies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -25,32 +43,81 @@ const DemoTanstackQueryRoute = DemoTanstackQueryRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/filter-movies': typeof FilterMoviesRoute
+  '/random-movies': typeof RandomMoviesRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/filter-movies': typeof FilterMoviesRoute
+  '/random-movies': typeof RandomMoviesRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/filter-movies': typeof FilterMoviesRoute
+  '/random-movies': typeof RandomMoviesRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/demo/tanstack-query'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/filter-movies'
+    | '/random-movies'
+    | '/demo/tanstack-query'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/demo/tanstack-query'
-  id: '__root__' | '/' | '/demo/tanstack-query'
+  to:
+    | '/'
+    | '/about'
+    | '/filter-movies'
+    | '/random-movies'
+    | '/demo/tanstack-query'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/filter-movies'
+    | '/random-movies'
+    | '/demo/tanstack-query'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  FilterMoviesRoute: typeof FilterMoviesRoute
+  RandomMoviesRoute: typeof RandomMoviesRoute
   DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/random-movies': {
+      id: '/random-movies'
+      path: '/random-movies'
+      fullPath: '/random-movies'
+      preLoaderRoute: typeof RandomMoviesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/filter-movies': {
+      id: '/filter-movies'
+      path: '/filter-movies'
+      fullPath: '/filter-movies'
+      preLoaderRoute: typeof FilterMoviesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -70,6 +137,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  FilterMoviesRoute: FilterMoviesRoute,
+  RandomMoviesRoute: RandomMoviesRoute,
   DemoTanstackQueryRoute: DemoTanstackQueryRoute,
 }
 export const routeTree = rootRouteImport
