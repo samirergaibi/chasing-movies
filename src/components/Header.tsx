@@ -1,11 +1,15 @@
-import { Link } from '@tanstack/react-router'
+import { useState } from 'react';
+import { Link } from '@tanstack/react-router';
+import { CupSoda, Hamburger } from 'lucide-react';
 
-import logoUrl from '../images/logo.png'
+import logoUrl from '../images/logo.png';
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <header className="bg-[#252525] text-white fixed w-full">
-      <nav className="flex justify-between p-5">
+    <header className="bg-[var(--main-bg-color)] text-white fixed w-full">
+      <nav className="hidden md:flex justify-between p-5 text-xl">
         <Link to="/">
           <img src={logoUrl} alt="Chasing movies logo" className="w-12" />
         </Link>
@@ -24,6 +28,16 @@ export default function Header() {
           </Link>
         </div>
       </nav>
+      <nav className="md:hidden p-5 text-xl">
+        <div className="w-full flex justify-between items-center">
+          <Link to="/">
+            <img src={logoUrl} alt="Chasing movies logo" className="w-12" />
+          </Link>
+          <button onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <Hamburger size={36} /> : <CupSoda size={36} />}
+          </button>
+        </div>
+      </nav>
     </header>
-  )
+  );
 }
