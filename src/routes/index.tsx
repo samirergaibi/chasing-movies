@@ -17,7 +17,7 @@ function Index() {
         Welcome to <strong>Chasing Movies</strong>! <br /> A centralized place
         for you to find a movie to watch.
       </p>
-      <div className="text-white bg-[var(--main-bg-color)] p-10 rounded shadow-2xl">
+      <div className="text-white bg-(--main-bg-color) p-10 rounded shadow-2xl">
         <p className="border-b text-center py-4 md:min-w-md">You....</p>
         <div className="flex justify-center items-center gap-4">
           <BadgeQuestionMark />
