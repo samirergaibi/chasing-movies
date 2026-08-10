@@ -28,11 +28,38 @@ type SpokenLanguage = {
   name: string;
 };
 
+export type TMDBVideo = {
+  id: string;
+  key: string;
+  name: string;
+  site: string;
+  type: string;
+  official: boolean;
+};
+
+export type CastMember = {
+  adult: boolean;
+  gender: number | null;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string | null;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order: number;
+};
+
 export type Movie = {
   adult: boolean;
   backdrop_path: string | null;
   belongs_to_collection: Collection | null;
   budget: number;
+  credits?: {
+    cast?: CastMember[];
+  };
   genres: Genre[];
   homepage: string | null;
   id: number;
@@ -54,6 +81,9 @@ export type Movie = {
   tagline: string | null;
   title: string;
   video: boolean;
+  videos?: {
+    results: TMDBVideo[];
+  };
   vote_average: number;
   vote_count: number;
 };

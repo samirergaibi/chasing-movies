@@ -10,9 +10,9 @@ export const Route = createFileRoute('/random-movies')({
 });
 
 function RandomMovies() {
-  const { data: movies } = useQuery<Movie[]>({
-    initialData: [],
+  const { data: movies = [] } = useQuery<Movie[]>({
     queryKey: ['random-movies'],
+    staleTime: Infinity,
     queryFn: async () => {
       const randomPage = Math.ceil(Math.random() * 100);
       const randomMoviesResp = await fetch(
@@ -33,8 +33,8 @@ function RandomMovies() {
   });
 
   return (
-    <div className="my-50 text-center">
-      <h1 className="text-4xl underline font-bold my-6">Random movies</h1>
+    <div className="my-40 max-w-[1050px] mx-auto text-center">
+      <h1 className="text-4xl underline font-semibold my-6">Random movies</h1>
       <div className="bg-yellow-200 px-6 py-4 inline-block shadow mx-2 mb-8">
         <p className="italic">
           Reloading this page will result in twenty new randomly selected
@@ -43,13 +43,21 @@ function RandomMovies() {
       </div>
       {movies.map((movie) => (
         <div key={movie.id} className="my-4">
-          <h2 className="font-bold text-2xl mb-8">{movie.title}</h2>
+          <a href={`/movies/${movie.id}`}>
+            <h2 className="inline-block font-semibold text-2xl mb-8">
+              {movie.title}
+            </h2>
+          </a>
           <div className="grid grid-cols-2 items-center gap-30">
-            <img
-              src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`}
-              alt={`Poster for ${movie.title}`}
-              className="justify-self-end"
-            />
+            <div>
+              <a href={`/movies/${movie.id}`} className="inline-block">
+                <img
+                  src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`}
+                  alt={`Poster for ${movie.title}`}
+                  className="justify-self-end"
+                />
+              </a>
+            </div>
             <div className="justify-self-start flex flex-col gap-8">
               <div className="flex flex-col items-center">
                 <CalendarDays />
@@ -59,7 +67,7 @@ function RandomMovies() {
                 <Drama />
                 <div>
                   {movie.genres.map((genre) => (
-                    <div>{genre.name}</div>
+                    <div key={genre.id}>{genre.name}</div>
                   ))}
                 </div>
               </div>
@@ -69,7 +77,7 @@ function RandomMovies() {
               </div>
             </div>
           </div>
-          <hr className="my-20 mx-50" />
+          <hr className="my-20 md:mx-50 mx-10" />
         </div>
       ))}
     </div>

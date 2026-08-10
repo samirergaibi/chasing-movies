@@ -8,7 +8,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-[var(--main-bg-color)] text-white fixed w-full">
+    <header className="bg-(--main-bg-color) text-white fixed w-full">
       <nav className="hidden md:flex justify-between p-5 text-xl">
         <Link to="/">
           <img src={logoUrl} alt="Chasing movies logo" className="w-12" />

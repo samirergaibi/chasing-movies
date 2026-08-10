@@ -3,6 +3,7 @@
 
 :root {
   --main-bg-color: #252525;
+  --secondary-bg-color: rgba(37, 37, 37, 0.9);
 }
 
 body {
