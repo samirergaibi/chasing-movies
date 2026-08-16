@@ -14,13 +14,25 @@ export default function Header() {
           <img src={logoUrl} alt="Chasing movies logo" className="w-12" />
         </Link>
         <div className="flex items-center gap-12">
-          <Link className="hover:text-[#2b90af]" to="/random-movies">
+          <Link
+            className="hover:text-[#2b90af]"
+            to="/random-movies"
+            activeProps={{ style: { color: '#2b90af' } }}
+          >
             Random Movies
           </Link>
-          <Link className="hover:text-[#2b90af]" to="/filter-movies">
+          <Link
+            className="hover:text-[#2b90af]"
+            to="/filter-movies"
+            activeProps={{ style: { color: '#2b90af' } }}
+          >
             Filter Movies
           </Link>
-          <Link className="hover:text-[#2b90af]" to="/about">
+          <Link
+            className="hover:text-[#2b90af]"
+            to="/about"
+            activeProps={{ style: { color: '#2b90af' } }}
+          >
             About
           </Link>
           <Link to="/demo/tanstack-query" className="hover:text-[#2b90af]">
