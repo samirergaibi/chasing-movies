@@ -13,6 +13,17 @@ import {
 import type { Movie, TMDBVideo } from '@/types';
 import { getRuntime } from '@/utils/get-runtime';
 
+export const Route = createFileRoute('/movie/$movieId')({
+  component: Movie,
+  loader: async ({ params }) => {
+    const movieId = params.movieId;
+    const resp = await fetch(
+      `http://localhost:3011/tmdb/movie/${movieId}?append_to_response=videos,credits`,
+    );
+    return await resp.json();
+  },
+});
+
 function getYoutubeVideoUrl(videos: TMDBVideo[] | undefined) {
   if (!videos) return null;
 
@@ -27,17 +38,6 @@ function getYoutubeVideoUrl(videos: TMDBVideo[] | undefined) {
   }
   return `https://www.youtube.com/embed/${youtubeTrailers[0].key}`;
 }
-
-export const Route = createFileRoute('/movies/$movieId')({
-  component: Movie,
-  loader: async ({ params }) => {
-    const movieId = params.movieId;
-    const resp = await fetch(
-      `http://localhost:3011/tmdb/movie/${movieId}?append_to_response=videos,credits`,
-    );
-    return await resp.json();
-  },
-});
 
 function Movie() {
   const movie: Movie = Route.useLoaderData();

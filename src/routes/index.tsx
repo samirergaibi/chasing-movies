@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router';
-import { ArrowRight, BadgeQuestionMark } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 import popcornImgUrl from '../images/popcorn.png';
 

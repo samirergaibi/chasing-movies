@@ -11,18 +11,10 @@ import { useDebounce } from '@/hooks/useDebounce';
 // sync the genres to query params or session/local storage so they're not lost between switching routes
 
 function getRandomPage(exclusion: number[]): number | null {
-  // TODO: To improve the algorithm we should make sure that it selected a lower bound number first
-  // e.g. if the array contains less than 10 values, pick a random number between 1 - 10
-  // if above 10 but lower than 20 select between 20 -30
-  // etc. etc.
-  // this would still provide the feeling of "randomness" but also provide the most popular movies first.
-  const MAX = 50;
-  if (exclusion.length >= MAX) {
-    return null;
-  }
-  let randomPage = Math.ceil(Math.random() * MAX);
+  const maxPageLimit = exclusion.length + 5;
+  let randomPage = Math.ceil(Math.random() * maxPageLimit);
   while (exclusion.includes(randomPage)) {
-    randomPage = Math.ceil(Math.random() * MAX);
+    randomPage = Math.ceil(Math.random() * maxPageLimit);
   }
   return randomPage;
 }
@@ -150,7 +142,7 @@ function RandomMovies() {
               {index !== 0 && (
                 <hr className="my-20 mx-10 md:mx-auto max-w-[800px]" />
               )}
-              <a href={`/movies/${movie.id}`} target="_blank">
+              <a href={`/movie/${movie.id}`} target="_blank">
                 <h2 className="inline-block font-semibold text-2xl mb-8">
                   {movie.title}
                 </h2>
@@ -158,7 +150,7 @@ function RandomMovies() {
               <div className="max-w-[580px] mx-auto grid grid-cols-2 items-center md:gap-30">
                 <div>
                   <a
-                    href={`/movies/${movie.id}`}
+                    href={`/movie/${movie.id}`}
                     className="inline-block"
                     target="_blank"
                   >
