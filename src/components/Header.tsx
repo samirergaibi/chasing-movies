@@ -15,28 +15,31 @@ export default function Header() {
         </Link>
         <div className="flex items-center gap-12">
           <Link
-            className="hover:text-[#2b90af]"
-            to="/random-movies"
-            activeProps={{ style: { color: '#2b90af' } }}
+            className="hover:text-[#2b90af] hover:underline"
+            to="/"
+            activeProps={{
+              style: { color: '#2b90af', textDecoration: 'underline' },
+            }}
           >
-            Random Movies
+            Home
           </Link>
           <Link
-            className="hover:text-[#2b90af]"
-            to="/filter-movies"
-            activeProps={{ style: { color: '#2b90af' } }}
+            className="hover:text-[#2b90af] hover:underline"
+            to="/movies"
+            activeProps={{
+              style: { color: '#2b90af', textDecoration: 'underline' },
+            }}
           >
-            Filter Movies
+            Movies
           </Link>
           <Link
-            className="hover:text-[#2b90af]"
+            className="hover:text-[#2b90af] hover:underline"
             to="/about"
-            activeProps={{ style: { color: '#2b90af' } }}
+            activeProps={{
+              style: { color: '#2b90af', textDecoration: 'underline' },
+            }}
           >
             About
-          </Link>
-          <Link to="/demo/tanstack-query" className="hover:text-[#2b90af]">
-            TanStack Query
           </Link>
         </div>
       </nav>

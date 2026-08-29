@@ -11,9 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
-import { Route as FilterMoviesRouteImport } from './routes/filter-movies'
-import { Route as RandomMoviesRouteImport } from './routes/random-movies'
-import { Route as DemoTanstackQueryRouteImport } from './routes/demo.tanstack-query'
+import { Route as MoviesRouteImport } from './routes/movies'
 import { Route as MoviesMovieIdRouteImport } from './routes/movies/$movieId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -26,86 +24,48 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FilterMoviesRoute = FilterMoviesRouteImport.update({
-  id: '/filter-movies',
-  path: '/filter-movies',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RandomMoviesRoute = RandomMoviesRouteImport.update({
-  id: '/random-movies',
-  path: '/random-movies',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoTanstackQueryRoute = DemoTanstackQueryRouteImport.update({
-  id: '/demo/tanstack-query',
-  path: '/demo/tanstack-query',
+const MoviesRoute = MoviesRouteImport.update({
+  id: '/movies',
+  path: '/movies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MoviesMovieIdRoute = MoviesMovieIdRouteImport.update({
-  id: '/movies/$movieId',
-  path: '/movies/$movieId',
-  getParentRoute: () => rootRouteImport,
+  id: '/$movieId',
+  path: '/$movieId',
+  getParentRoute: () => MoviesRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/filter-movies': typeof FilterMoviesRoute
-  '/random-movies': typeof RandomMoviesRoute
-  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/movies': typeof MoviesRouteWithChildren
   '/movies/$movieId': typeof MoviesMovieIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/filter-movies': typeof FilterMoviesRoute
-  '/random-movies': typeof RandomMoviesRoute
-  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/movies': typeof MoviesRouteWithChildren
   '/movies/$movieId': typeof MoviesMovieIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/filter-movies': typeof FilterMoviesRoute
-  '/random-movies': typeof RandomMoviesRoute
-  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/movies': typeof MoviesRouteWithChildren
   '/movies/$movieId': typeof MoviesMovieIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/about'
-    | '/filter-movies'
-    | '/random-movies'
-    | '/demo/tanstack-query'
-    | '/movies/$movieId'
+  fullPaths: '/' | '/about' | '/movies' | '/movies/$movieId'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/about'
-    | '/filter-movies'
-    | '/random-movies'
-    | '/demo/tanstack-query'
-    | '/movies/$movieId'
-  id:
-    | '__root__'
-    | '/'
-    | '/about'
-    | '/filter-movies'
-    | '/random-movies'
-    | '/demo/tanstack-query'
-    | '/movies/$movieId'
+  to: '/' | '/about' | '/movies' | '/movies/$movieId'
+  id: '__root__' | '/' | '/about' | '/movies' | '/movies/$movieId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  FilterMoviesRoute: typeof FilterMoviesRoute
-  RandomMoviesRoute: typeof RandomMoviesRoute
-  DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
-  MoviesMovieIdRoute: typeof MoviesMovieIdRoute
+  MoviesRoute: typeof MoviesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -124,44 +84,38 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/filter-movies': {
-      id: '/filter-movies'
-      path: '/filter-movies'
-      fullPath: '/filter-movies'
-      preLoaderRoute: typeof FilterMoviesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/random-movies': {
-      id: '/random-movies'
-      path: '/random-movies'
-      fullPath: '/random-movies'
-      preLoaderRoute: typeof RandomMoviesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/tanstack-query': {
-      id: '/demo/tanstack-query'
-      path: '/demo/tanstack-query'
-      fullPath: '/demo/tanstack-query'
-      preLoaderRoute: typeof DemoTanstackQueryRouteImport
+    '/movies': {
+      id: '/movies'
+      path: '/movies'
+      fullPath: '/movies'
+      preLoaderRoute: typeof MoviesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/movies/$movieId': {
       id: '/movies/$movieId'
-      path: '/movies/$movieId'
+      path: '/$movieId'
       fullPath: '/movies/$movieId'
       preLoaderRoute: typeof MoviesMovieIdRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof MoviesRoute
     }
   }
 }
 
+interface MoviesRouteChildren {
+  MoviesMovieIdRoute: typeof MoviesMovieIdRoute
+}
+
+const MoviesRouteChildren: MoviesRouteChildren = {
+  MoviesMovieIdRoute: MoviesMovieIdRoute,
+}
+
+const MoviesRouteWithChildren =
+  MoviesRoute._addFileChildren(MoviesRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  FilterMoviesRoute: FilterMoviesRoute,
-  RandomMoviesRoute: RandomMoviesRoute,
-  DemoTanstackQueryRoute: DemoTanstackQueryRoute,
-  MoviesMovieIdRoute: MoviesMovieIdRoute,
+  MoviesRoute: MoviesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

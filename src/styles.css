@@ -7,6 +7,10 @@
   --tertiary-bg-color: oklch(0.71 0.18 22.68);
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;

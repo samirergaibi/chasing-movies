@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router';
-import { BadgeQuestionMark, Funnel } from 'lucide-react';
+import { ArrowRight, BadgeQuestionMark } from 'lucide-react';
 
 import popcornImgUrl from '../images/popcorn.png';
 
@@ -18,21 +18,12 @@ function Index() {
         for you to find a movie to watch.
       </p>
       <div className="text-white bg-(--main-bg-color) p-10 rounded shadow-2xl">
-        <p className="border-b text-center py-4 md:min-w-md">You....</p>
+        <p className="border-b text-center py-4 md:min-w-md">Ready?</p>
         <div className="flex justify-center items-center gap-4">
-          <BadgeQuestionMark />
-          <Link to="/random-movies">
-            <p className=" text-center py-4 hover:text-[#2b90af]">
-              Have no idea what to watch
-            </p>
-          </Link>
-        </div>
-        <div className="border-b" />
-        <div className="flex justify-center items-center gap-4">
-          <Funnel />
-          <Link to="/filter-movies">
-            <p className="py-4 text-center hover:text-[#2b90af]">
-              Kinda know what to watch
+          <ArrowRight />
+          <Link to="/movies">
+            <p className="py-4 hover:text-[#2b90af] hover:underline">
+              Let's go get some movie suggestions
             </p>
           </Link>
         </div>
