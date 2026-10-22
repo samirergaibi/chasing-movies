@@ -1,45 +1,52 @@
 {
   "name": "chasing-movies",
-  "author": {
-    "name": "Samir Ergaibi"
-  },
-  "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@emotion/core": "^10.0.22",
-    "@fortawesome/fontawesome-svg-core": "^1.2.26",
-    "@fortawesome/free-regular-svg-icons": "^5.12.0",
-    "@fortawesome/free-solid-svg-icons": "^5.12.0",
-    "@fortawesome/react-fontawesome": "^0.1.8",
-    "@reach/router": "^1.2.1",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^7.2.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-ga": "^2.7.0",
-    "react-scripts": "3.3.0"
-  },
-  "devDependencies": {},
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "vite build && tsc",
+    "dev": "concurrently -n server,vite -c blue,green 'pnpm start:server' 'vite --port 3010 --clearScreen=false'",
+    "start": "node server.ts",
+    "start:server": "node --watch server.ts",
+    "preview": "concurrently \"pnpm start\" \"vite preview\"",
+    "test": "vitest run",
+    "lint": "eslint",
+    "format": "prettier",
+    "check": "prettier --write . && eslint --fix",
+    "type-check": "tsc --noEmit",
+    "checks": "pnpm check && pnpm lint && pnpm type-check"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "dependencies": {
+    "@fastify/cors": "^11.1.0",
+    "@fastify/http-proxy": "^11.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@tanstack/react-devtools": "^0.2.2",
+    "@tanstack/react-query": "^5.66.5",
+    "@tanstack/react-query-devtools": "^5.84.2",
+    "@tanstack/react-router": "^1.132.0",
+    "@tanstack/react-router-devtools": "^1.132.0",
+    "@tanstack/router-plugin": "^1.132.0",
+    "dotenv": "^17.2.3",
+    "fastify": "^5.6.1",
+    "lucide-react": "^0.548.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.0.6"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@tanstack/eslint-config": "^0.3.2",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.2.0",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^6.1.1",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.36.0",
+    "jsdom": "^26.0.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.7.2",
+    "vite": "^8.2.2",
+    "vitest": "^4.1.11",
+    "web-vitals": "^4.2.4"
   }
 }
