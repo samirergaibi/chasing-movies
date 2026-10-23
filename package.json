@@ -4,10 +4,8 @@
   "type": "module",
   "scripts": {
     "build": "vite build && tsc",
-    "dev": "concurrently -n server,vite -c blue,green 'pnpm start:server' 'vite --port 3010 --clearScreen=false'",
-    "start": "node server.ts",
-    "start:server": "node --watch server.ts",
-    "preview": "concurrently \"pnpm start\" \"vite preview\"",
+    "dev": "vite --port 3010 --clearScreen=false",
+    "start": "vite preview",
     "test": "vitest run",
     "lint": "eslint",
     "format": "prettier",

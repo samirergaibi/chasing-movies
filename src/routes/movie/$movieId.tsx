@@ -18,7 +18,7 @@ export const Route = createFileRoute('/movie/$movieId')({
   loader: async ({ params }) => {
     const movieId = params.movieId;
     const resp = await fetch(
-      `http://localhost:3011/tmdb/movie/${movieId}?append_to_response=videos,credits`,
+      `https://relay.hoaxer.org/tmdb/movie/${movieId}?append_to_response=videos,credits`,
     );
     return await resp.json();
   },

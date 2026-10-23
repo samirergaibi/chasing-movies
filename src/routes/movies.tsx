@@ -25,13 +25,13 @@ async function fetchMovies(
 ): Promise<Movie[]> {
   try {
     const randomMoviesResp = await fetch(
-      `http://localhost:3011/tmdb/discover/movie?page=${pageParam}&with_genres=${genres.join('|')}`,
+      `https://relay.hoaxer.org/tmdb/discover/movie?page=${pageParam}&with_genres=${genres.join('|')}`,
     );
     const randomMovies = (await randomMoviesResp.json())?.results ?? [];
     const moviesData = await Promise.all([
       ...randomMovies.map(async (movie: Movie) => {
         const resp = await fetch(
-          `http://localhost:3011/tmdb/movie/${movie.id}`,
+          `https://relay.hoaxer.org/tmdb/movie/${movie.id}`,
         );
         return await resp.json();
       }),
@@ -48,7 +48,7 @@ async function fetchMovies(
 export const Route = createFileRoute('/movies')({
   component: RandomMovies,
   loader: async () => {
-    const resp = await fetch('http://localhost:3011/tmdb/genre/movie/list');
+    const resp = await fetch('https://relay.hoaxer.org/tmdb/genre/movie/list');
     return await resp.json();
   },
 });
