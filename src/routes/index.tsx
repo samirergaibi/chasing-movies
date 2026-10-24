@@ -23,7 +23,7 @@ function Index() {
           <ArrowRight />
           <Link to="/movies">
             <p className="py-4 hover:text-[#2b90af] hover:underline">
-              Let's go get some movie suggestions
+              Lets find a movie to watch!
             </p>
           </Link>
         </div>
