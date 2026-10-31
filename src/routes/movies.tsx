@@ -6,6 +6,7 @@ import { AlertCircle, CalendarDays, Clock, Drama, Info } from 'lucide-react';
 import type { Genre, Movie } from '@/types';
 import { getRuntime } from '@/utils/get-runtime';
 import { useDebounce } from '@/hooks/useDebounce';
+import { config } from '@/config';
 
 // TODO:
 // sync the genres to query params or session/local storage so they're not lost between switching routes
@@ -25,14 +26,12 @@ async function fetchMovies(
 ): Promise<Movie[]> {
   try {
     const randomMoviesResp = await fetch(
-      `https://relay.hoaxer.org/tmdb/discover/movie?page=${pageParam}&with_genres=${genres.join('|')}`,
+      `${config.apiBaseUrl}/tmdb/discover/movie?page=${pageParam}&with_genres=${genres.join('|')}`,
     );
     const randomMovies = (await randomMoviesResp.json())?.results ?? [];
     const moviesData = await Promise.all([
       ...randomMovies.map(async (movie: Movie) => {
-        const resp = await fetch(
-          `https://relay.hoaxer.org/tmdb/movie/${movie.id}`,
-        );
+        const resp = await fetch(`${config.apiBaseUrl}/tmdb/movie/${movie.id}`);
         return await resp.json();
       }),
     ]);

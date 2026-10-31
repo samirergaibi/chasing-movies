@@ -12,13 +12,14 @@ import {
 
 import type { Movie, TMDBVideo } from '@/types';
 import { getRuntime } from '@/utils/get-runtime';
+import { config } from '@/config';
 
 export const Route = createFileRoute('/movie/$movieId')({
   component: Movie,
   loader: async ({ params }) => {
     const movieId = params.movieId;
     const resp = await fetch(
-      `https://relay.hoaxer.org/tmdb/movie/${movieId}?append_to_response=videos,credits`,
+      `${config.apiBaseUrl}/tmdb/movie/${movieId}?append_to_response=videos,credits`,
     );
     return await resp.json();
   },
